@@ -14,7 +14,7 @@ public class Persona {
     private String nombre;
     private String apellido;
 
-    private int edad;
+    private Integer edad;
 
 
     public Long getId() {
@@ -41,7 +41,7 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
