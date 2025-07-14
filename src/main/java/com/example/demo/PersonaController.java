@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,13 +22,23 @@ public class PersonaController {
         return personaService.save(persona);
     }
 
-    @PutMapping
-    public Persona actualizar(@RequestBody Persona persona) {
-        return personaService.save(persona);
+    @PutMapping("/{id}")
+    public ResponseEntity<Persona> actualizar(@PathVariable Long id, @RequestBody Persona persona) {
+        try {
+            Persona personaActualizada = personaService.update(id, persona);
+            return  ResponseEntity.ok(personaActualizada);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping
-    public void eliminar(@RequestBody Persona persona) {
-        personaService.delete(persona);
+    @PatchMapping("/{id}")
+    public ResponseEntity<Persona> actualizarParcial(@PathVariable Long id, @RequestBody Persona persona) {
+        try {
+            Persona personaActualizada = personaService.updateParcial(id, persona);
+            return  ResponseEntity.ok(personaActualizada);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
