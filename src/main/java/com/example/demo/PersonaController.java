@@ -20,4 +20,14 @@ public class PersonaController {
     public Persona salvar(@RequestBody Persona persona) {
         return personaService.save(persona);
     }
+
+    @PutMapping
+    public Persona actualizar(@RequestBody Persona persona) {
+        return personaService.save(persona);
+    }
+
+    @DeleteMapping
+    public void eliminar(@RequestBody Persona persona) {
+        personaService.delete(persona);
+    }
 }
